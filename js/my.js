@@ -499,15 +499,16 @@ function calc() {
   //     elotorl.push([month, add, lloss, mode, aid, addfull, newdue]);
   //   }
   // }
-  for (j = 0; j < document.querySelectorAll('.interest-row').length - 1; j++) {
-    var month = getNumVal($('#interest-month-' + j));
-    var rate = getNumVal($('#interest-rate-' + j));
-    var mode = parseInt($('input[name=interest-mode-' + j + ']:checked').val());
-
-    if (month > 0 && rate > 0) {
+  $('.interest-row').each(function (e) {
+	  var month = getNumVal($(this).find('[name="interest-month"]'));
+    var rate = getNumVal($(this).find('[name="interest-rate"]'));
+    var mode = parseInt($(this).find('[name="interest-mode"]').val());
+	
+	  if (month > 0 && rate > 0) {
       interestList.push([month, rate, mode]);
-    }
-  }
+	  }
+  });
+
 
   ///Generate without prepayment
 
